@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
   end
   
   def show
-
+   
   end
   
   def new
@@ -58,7 +58,7 @@ class RecipesController < ApplicationController
       redirect_to :back
     end
   end
-  
+
   def destroy
     Recipe.find(params[:id]).destroy
     flash[:success] = "Recipe deleted"

@@ -1,4 +1,5 @@
 <%= render 'shared/page_title', title: @recipe.name %> 
+<%= render 'shared/errors', obj: @recipe %>
 <div class="row">
   <div class="col-md-4 pull-right center">
     <%= link_to gravatar_for(@recipe.chef, size: 200), chef_path(@recipe.chef)  %>
@@ -47,5 +48,28 @@
     </div>
   </div>
 </div>
-
+<div class="row">
+    <div class="well  col-md-8">
+<h2>Add a review:</h2>
+<%= form_for([@recipe,@recipe.reviews.build]) do |f| %>
+  <p>
+    <%= f.label :Review %><br>
+    <%= f.text_area :body %>
+    
+  </p>
+  <p>
+    <%= f.submit('Add Review', class: "btn btn-success") %>
+  </p>
+<% end %>
+</div></div>
+<div class="row">
+    <div class="well  col-md-8">
+<h2>Reviews</h2>
+<% @recipe.reviews.each do |review| %>
+  <p>
+    <strong>Review:</strong>
+    <%= review.body %>
+  </p>
+<% end %>
+</div></div>
 <h5><%= link_to "Return to Recipes Listing", recipes_path, class:"btn btn-warning btn-small" %></h5>
